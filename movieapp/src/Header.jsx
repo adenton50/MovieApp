@@ -9,10 +9,10 @@ export default function Header({ setData, setInput, input }) {
       const data = await response.json();
       console.log(data);
       setData(data);
-      setInput("");
     } catch (error) {
       console.log("Error", error);
     }
+    setInput("");
   };
   return (
     <div>
@@ -55,6 +55,7 @@ export default function Header({ setData, setInput, input }) {
               onChange={(e) => {
                 setInput(e.target.value);
               }}
+              value={input}
             />
             <button
               type="submit"

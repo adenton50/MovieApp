@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <Header setInput={setInput} setData={setData} input={input} />
-      {/* <MoviePage data={data} /> */}
+      <MoviePage data={data} />
     </div>
   );
 }

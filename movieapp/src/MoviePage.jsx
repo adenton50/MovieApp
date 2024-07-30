@@ -1,7 +1,9 @@
 export default function MoviePage({ data }) {
-  if (!data) {
-    return <div></div>;
-  } else if (data) {
+  // console.log(data.length);
+  // console.log(typeof data);
+  if (data.length === 1) {
+    return <div>Hello</div>;
+  } else if (data.length === undefined) {
     const cleanVotes = data.imdbVotes.replace(/[^0-9]/g, ""); // Remove non-numeric characters
     const imdbVotes = Number(cleanVotes);
     return (
@@ -37,24 +39,40 @@ export default function MoviePage({ data }) {
             </div>
           </div>
           {/* header for card */}
+          <div className="flex flex-row gap-2">
+            {data.Genre.split(",").map((word) => (
+              <button className="border border-1 rounded-xl px-2 font-medium text-white hover:bg-gray-600">
+                {word}
+              </button>
+            ))}
+          </div>
+          <p className="font-medium text-white">{data.Plot}</p>
           <p>
-            {data.Genre.split(",").map((item) => {
-              <button>{item}</button>;
-            })}
-          </p>
-          <p>{data.Plot}</p>
-          <p>
-            <strong>Director </strong>
-            {data.Director}
-          </p>
-          <p>
-            <strong>Writer </strong>
-            {data.Writer}
+            <strong className="text-white">Director </strong>
           </p>
           <p>
-            <strong>Stars </strong>
-            {data.Actors}
+            <a href="" className="text-blue-500 hover:underline">
+              {data.Director}
+            </a>
           </p>
+          <p>
+            <strong className="text-white">Writer </strong>
+          </p>
+          <p>
+            <a href="google.com" className="text-blue-500 hover:underline">
+              {data.Writer}
+            </a>
+          </p>
+          <p>
+            <strong className="text-white">Stars </strong>
+          </p>
+          <div>
+            {data.Actors.split(",").map((actor) => (
+              <a href="" className="text-blue-500 hover:underline">
+                {actor + ","}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     );

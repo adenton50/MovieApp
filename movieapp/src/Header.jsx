@@ -17,7 +17,10 @@ export default function Header({ setData, setInput, input }) {
   return (
     <div>
       <div className="shadow flex-row flex p-8 bg-black">
-        <div className="bg-yellow-500 text-black p-4 rounded-lg">
+        <div
+          onClick={() => window.location.reload()}
+          className="bg-yellow-500 text-black p-4 rounded-lg pointer cursor-pointer"
+        >
           <h1 className="text-4xl font-bold">AdaMDd</h1>
         </div>
         <div className="flex-1"></div>

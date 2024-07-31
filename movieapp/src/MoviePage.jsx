@@ -9,8 +9,8 @@ export default function MoviePage({ data }) {
             Welcome to AdaMDd!
           </h5>
           <p className="font-normal text-gray-700 dark:text-gray-400">
-            Use the search bar to search for movies before you watch them. We
-            include the plot, the reviews and actors starring in them.
+            Use the search bar to search for movies or TV shows before you watch
+            them. We include the plot, the reviews and actors starring in them.
           </p>
         </div>
       </div>

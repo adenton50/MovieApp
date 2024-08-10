@@ -1,7 +1,9 @@
+require("dotenv").config();
+
 export default function Header({ setData, setInput, input }) {
   const fetchData = async (e) => {
     e.preventDefault();
-    const API_KEY = "259668b2";
+    const API_KEY = process.env.API_KEY;
     try {
       const response = await fetch(
         `http://www.omdbapi.com/?t=${input}&apikey=${API_KEY}`

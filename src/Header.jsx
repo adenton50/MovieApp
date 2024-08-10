@@ -1,5 +1,6 @@
 export default function Header({ setData, setInput, input }) {
   const fetchData = async (e) => {
+    // hello there
     e.preventDefault();
     const API_KEY = import.meta.env.VITE_API_KEY;
     try {

@@ -4,17 +4,20 @@ export default function Review({ data }) {
   return (
     <div>
       <div className="bg-gray-900 h-screen pt-16">
-        <div className="w-1/2 mx-auto text-gray-400">
+        <div className="md:w-1/2 mx-auto text-gray-400 px-4">
           <div className="flex flex-row justify-between">
             <div>
-              <h1 className="text-4xl text-white mb-2">{data.Title}</h1>
+              <h1 className="text-3xl md:text-4xl text-white mb-2">
+                {data.Title}
+              </h1>
               <p>
                 {data.Year} &bull; {data.Rated} &bull; {data.Runtime}
               </p>
             </div>
-            <div className="flex flex-row gap-8">
+            <div className="flex flex-row md:gap-8">
               <div>
-                <p className="font-bold">IMDb RATING</p>
+                <p className="font-bold hidden md:block">IMDb RATING</p>
+                <p className="font-bold md:hidden block text-center">IMDb</p>
                 <p className="text-center">
                   ⭐
                   <span className="text-white text-xl font-bold">
@@ -29,7 +32,10 @@ export default function Review({ data }) {
                 </p>
               </div>
               <div>
-                <p className="font-bold">ROTTEN TOMATOES RATING</p>
+                <p className="font-bold hidden md:block">
+                  ROTTEN TOMATOES RATING
+                </p>
+                <p className="font-bold md:hidden block">ROTTEN TOMATOES</p>
                 <p className="text-center">
                   🍅
                   {data?.Ratings?.[1]?.Value ?? "N/A"}
@@ -40,7 +46,16 @@ export default function Review({ data }) {
           {/* header for card */}
           <div className="flex flex-row gap-2 my-2">
             {data.Genre.split(",").map((word) => (
-              <button className="border border-1 rounded-xl px-2 font-medium text-white hover:bg-gray-600">
+              <button
+                onClick={() => {
+                  window.open(
+                    `https://www.google.com/search?q=${word}+movie+definition`,
+                    "_blank"
+                  );
+                }}
+                target="_blank"
+                className="border border-1 rounded-xl px-2 font-medium text-white hover:bg-gray-600"
+              >
                 {word}
               </button>
             ))}
@@ -52,7 +67,11 @@ export default function Review({ data }) {
             <strong className="text-white">Director </strong>
           </p>
           <p>
-            <a href="" className="text-blue-500 hover:underline">
+            <a
+              href={`https://www.google.com/search?q=${data.Director}`}
+              target="_blank"
+              className="text-blue-500 hover:underline"
+            >
               {data.Director}
             </a>
           </p>
@@ -61,7 +80,11 @@ export default function Review({ data }) {
             <strong className="text-white">Writer </strong>
           </p>
           <p className="my-4">
-            <a href="google.com" className="text-blue-500 hover:underline">
+            <a
+              href={`https://www.google.com/search?q=${data.Writer}`}
+              target="_blank"
+              className="text-blue-500 hover:underline"
+            >
               {data.Writer}
             </a>
           </p>
@@ -71,7 +94,11 @@ export default function Review({ data }) {
           </p>
           <div>
             {data.Actors.split(",").map((actor) => (
-              <a href="" className="text-blue-500 hover:underline">
+              <a
+                href={`https://www.google.com/search?q=${actor}`}
+                target="_blank"
+                className="text-blue-500 hover:underline"
+              >
                 {actor + ","}
               </a>
             ))}

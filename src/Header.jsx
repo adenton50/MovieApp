@@ -8,7 +8,11 @@ export default function Header({ setData, setInput, input }) {
         `http://www.omdbapi.com/?t=${input}&apikey=${API_KEY}`
       );
       const data = await response.json();
-      console.log(data);
+      if (data.Response === "False" || data.Error === "Movie not found!") {
+        alert("Movie not found!");
+        return;
+      }
+      //console.log(data);
       setData(data);
     } catch (error) {
       console.log("Error", error);
@@ -17,7 +21,7 @@ export default function Header({ setData, setInput, input }) {
   };
   return (
     <div>
-      <div className="shadow flex-row flex p-8 bg-black">
+      <div className="flex-row flex bg-black py-8 px-4 md:p-8">
         <div
           onClick={() => window.location.reload()}
           className="bg-yellow-500 text-black p-4 rounded-lg pointer cursor-pointer"
@@ -32,7 +36,7 @@ export default function Header({ setData, setInput, input }) {
           >
             Search
           </label>
-          <div className="relative w-96">
+          <div className="relative md:w-96 w-fit">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
               <svg
                 className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -53,17 +57,17 @@ export default function Header({ setData, setInput, input }) {
             <input
               type="search"
               id="default-search"
-              className="block w-full p-4 ps-10 text-md text-gray-900 border-4 border-yellow-500 rounded-lg bg-gray-50 focus:ring-yellow-500 focus:border-yellow-500 outline-none"
+              className="block w-full p-4 ps-10 md:text-lg text-gray-900 border-4 border-yellow-500 rounded-lg bg-gray-50 focus:ring-yellow-500 focus:border-yellow-500 outline-none"
               placeholder="Search for a movie..."
               required
               onChange={(e) => {
                 setInput(e.target.value);
               }}
               value={input}
-            />
+            ></input>
             <button
               type="submit"
-              className="text-white absolute end-2.5 bottom-3 bg-black hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm px-4 py-2 tracking-wider"
+              className="text-white absolute end-2.5 bottom-3 bg-black hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm px-4 py-2 tracking-wider md:block hidden"
             >
               Search
             </button>

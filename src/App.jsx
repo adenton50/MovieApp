@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Header from "./Header";
 import MoviePage from "./MoviePage";
-import "./App.css";
 
 function App() {
   const [input, setInput] = useState("");

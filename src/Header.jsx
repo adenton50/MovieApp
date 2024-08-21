@@ -5,7 +5,7 @@ export default function Header({ setData, setInput, input }) {
     const API_KEY = import.meta.env.VITE_API_KEY;
     try {
       const response = await fetch(
-        `http://www.omdbapi.com/?t=${input}&apikey=${API_KEY}`
+        `https://www.omdbapi.com/?t=${input}&apikey=${API_KEY}`
       );
       const data = await response.json();
       if (data.Response === "False" || data.Error === "Movie not found!") {

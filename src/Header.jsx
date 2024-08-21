@@ -21,14 +21,14 @@ export default function Header({ setData, setInput, input }) {
   };
   return (
     <div>
-      <div className="flex-row flex bg-black py-8 px-4 md:p-8">
+      <div className="flex-col md:flex-row flex bg-black py-8 md:p-8 gap-4 items-center justify-center">
         <div
           onClick={() => window.location.reload()}
-          className="bg-yellow-500 text-black p-4 rounded-lg pointer cursor-pointer"
+          className="bg-yellow-500 text-black p-4 rounded-lg pointer cursor-pointer w-fit"
         >
-          <h1 className="text-4xl font-bold">AdaMDd</h1>
+          <h1 className="text-2xl md:text-4xl font-bold text-center">AdaMDd</h1>
         </div>
-        <div className="flex-1"></div>
+        <div className="flex-1 md:block hidden"></div>
         <form onSubmit={fetchData} className="max-w-md mx-auto">
           <label
             htmlFor="default-search"
@@ -36,7 +36,7 @@ export default function Header({ setData, setInput, input }) {
           >
             Search
           </label>
-          <div className="relative md:w-96 w-fit">
+          <div className="relative w-96 w-fit">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
               <svg
                 className="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -67,7 +67,7 @@ export default function Header({ setData, setInput, input }) {
             ></input>
             <button
               type="submit"
-              className="text-white absolute end-2.5 bottom-3 bg-black hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm px-4 py-2 tracking-wider md:block hidden"
+              className="text-white absolute end-2.5 bottom-3 bg-black hover:bg-gray-500 focus:ring-4 focus:outline-none focus:ring-yellow-200 font-medium rounded-lg text-sm px-4 py-2 tracking-wider"
             >
               Search
             </button>

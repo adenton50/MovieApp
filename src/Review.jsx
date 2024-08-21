@@ -3,7 +3,7 @@ export default function Review({ data }) {
   const imdbVotes = Number(cleanVotes);
   return (
     <div>
-      <div className="bg-gray-900 h-screen pt-16">
+      <div className="bg-gray-900 pt-16 pb-16 md:h-full md:pb-96">
         <div className="md:w-1/2 mx-auto text-gray-400 px-4">
           <div className="flex flex-row justify-between">
             <div>
@@ -35,7 +35,9 @@ export default function Review({ data }) {
                 <p className="font-bold hidden md:block">
                   ROTTEN TOMATOES RATING
                 </p>
-                <p className="font-bold md:hidden block">ROTTEN TOMATOES</p>
+                <p className="font-bold md:hidden block text-center">
+                  ROTTEN TOMATOES
+                </p>
                 <p className="text-center">
                   🍅
                   {data?.Ratings?.[1]?.Value ?? "N/A"}

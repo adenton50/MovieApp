@@ -1,6 +1,8 @@
-export default function Review({ data }) {
+export default function Review({ data, posterData }) {
   const cleanVotes = data.imdbVotes.replace(/[^0-9]/g, "");
   const imdbVotes = Number(cleanVotes);
+  const baseUrl = "https://image.tmdb.org/t/p/";
+  const size = "w500";
   return (
     <div>
       <div className="bg-gray-900 pt-16 pb-16 md:h-full md:pb-96">
@@ -46,6 +48,12 @@ export default function Review({ data }) {
             </div>
           </div>
           {/* header for card */}
+          <div className="flex justify-center m-8">
+            <img
+              className="h-96"
+              src={`${baseUrl}${size}${posterData.results[0].poster_path}`}
+            ></img>
+          </div>
           <div className="flex flex-row gap-2 my-2">
             {data.Genre.split(",").map((word) => (
               <button

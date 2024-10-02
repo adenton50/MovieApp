@@ -1,13 +1,18 @@
-export default function Header({ setData, setInput, input }) {
+export default function Header({ setData, setInput, input, setPosterData }) {
   const fetchData = async (e) => {
-    // hello there
     e.preventDefault();
     const API_KEY = import.meta.env.VITE_API_KEY;
+    const API_KEY2 = import.meta.env.VITE_API_KEY2;
     try {
       const response = await fetch(
         `https://www.omdbapi.com/?t=${input}&apikey=${API_KEY}`
       );
       const data = await response.json();
+      const posterResponse = await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY2}&query=${input}`
+      );
+      const posterData = await posterResponse.json();
+      setPosterData(posterData);
       if (data.Response === "False" || data.Error === "Movie not found!") {
         alert("Movie not found!");
         return;

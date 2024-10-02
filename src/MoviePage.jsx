@@ -1,6 +1,6 @@
 import Review from "./Review";
 
-export default function MoviePage({ data }) {
+export default function MoviePage({ data, posterData }) {
   if (data.length === 1) {
     return (
       <div className="bg-gray-900 h-screen flex justify-center px-8">
@@ -17,6 +17,6 @@ export default function MoviePage({ data }) {
       </div>
     );
   } else {
-    return <Review data={data} />;
+    return <Review data={data} posterData={posterData} />;
   }
 }
